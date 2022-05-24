@@ -268,11 +268,12 @@ foreach ($customer in $customers) {
             Update-Contact -SyncroSubdomain $SyncroSubdomain -SyncroAPIKey $SyncroAPIKey -contactId $userExist.id
         }
     }
-    forEach ($contact in $contacts) {
+  forEach ($contact in $contacts) {
         if($Users.userprincipalname -notcontains $contact.email){
             Write-Host "$($contact.name) is not in Microsoft. Adding Note of Inactive in Syncro...." -ForegroundColor Red
-            Update-Contact -SyncroSubdomain $SyncroSubdomain -SyncroAPIKey $SyncroAPIKey -contactId $contact.id -notes "User doesn't exist in Microsoft"
+            Update-Contact -SyncroSubdomain $SyncroSubdomain -SyncroAPIKey $SyncroAPIKey -contactId $contact.id -title "INACTIVE"
         }
     }
 }
 }
+
